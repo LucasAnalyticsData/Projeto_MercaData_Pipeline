@@ -41,12 +41,20 @@ Bronze ──► Silver (validação + regras de negócio) ──► Gold (KPIs)
 
 ```
 notebooks/
-  01_conexao_adls_gen2.ipynb      # ingestão raw → bronze
-  02_eda_ecommerce.ipynb          # EDA exploratória da base
+  00_config_squad2_dupla1.py                          # credenciais, conectividade, observabilidade, alertas
+  01_conexao_adls_squad2_dupla1_Parte_Lucas.py         # ingestão raw (ADLS Gen2) → bronze
+  02_eda_ecommerce_squad2_dupla1.py                    # EDA exploratória da base
+  03_bronze_ingestao_delta_squad2_dupla1.py            # bronze: ingestão append-only idempotente
+  04_silver_ecommerce_squad2_dupla1.py                 # silver: validação de regras + quarentena
+  05_gold_kpis_produtos_categorias_squad2_dupla1.py    # gold: KPIs de margem, catálogo e qualidade
+  06_views_sqlserver_squad2_dupla1.sql                 # espelho/views no Azure SQL para o BI
 docs/
   guia_dashboard_executivo_gold.md
   padronizacao_dashboards.docx
 ```
+
+> Os notebooks são exportados no formato nativo do Databricks (`# Databricks notebook source`,
+> células `# COMMAND ----------`) e podem ser reimportados diretamente no workspace.
 
 ## Resultados
 
